@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warden Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Warden Dashboard</h1>
+    <h2>Student Complaints</h2>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>ID</th>
+            <th>Student Name</th>
+            <th>Room Number</th>
+            <th>Complaint</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for complaint in complaints %}
+        <tr>
+            <td>{{ complaint[0] }}</td>
+<td>{{ complaint[1] }}</td>
+<td>{{ complaint[2] }}</td>
+<td>{{ complaint[3] }}</td>
+<td>{{ complaint[4] }}</td>
+<td>
+    {% if complaint[4] == 'Pending' %}
+        <form action="/update_status/{{ complaint[0] }}" method="POST">
+            <button type="submit">Mark as Completed</button>
+        </form>
+    {% else %}
+        Completed
+    {% endif %}
+</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="/">Back to Complaint Form</a>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Complaint Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Hostel Complaint Management System</h1>
+    <p>Welcome to the Hostel Complaint Portal</p>
+
+    <h2>Submit a Complaint</h2>
+
+    <form action="{{ url_for('submit') }}" method="POST">
+        <label for="student_name">Student Name:</label>
+        <input type="text" id="student_name" name="student_name"
+               placeholder="Enter your name" required>
+
+        <label for="room_number">Room Number:</label>
+        <input type="text" id="room_number" name="room_number"
+               placeholder="Enter room number" required>
+
+        <label for="complaint">Complaint:</label>
+        <textarea id="complaint" name="complaint"
+                  placeholder="Describe your complaint" required></textarea>
+
+        <button type="submit">Submit Complaint</button>
+    </form>
+</body>
+</html>
